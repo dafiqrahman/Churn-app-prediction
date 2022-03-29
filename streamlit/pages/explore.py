@@ -25,10 +25,10 @@ def app():
         st.write("<p><b style = 'color : #ff4b4b'>F1 Score : </b>gabungan dari Recall dan Precision</p>",
                  unsafe_allow_html=True)
         st.markdown("<h5> Data Training </h5>", unsafe_allow_html=True)
-        df = pd.read_csv('data/data.csv', index_col=0)
+        df = pd.read_csv('/data/data.csv', index_col=0)
         st.write(df.head())
     with st.expander("Feature Importance", expanded=True):
-        feat_imp = pd.read_csv("data/feat_imp.csv", index_col=0)
+        feat_imp = pd.read_csv("/data/feat_imp.csv", index_col=0)
         fig = plt.figure(figsize=(10, 10))
         sns.barplot(x=feat_imp['importance'], y=feat_imp['feature'])
         plt.title('Feature Importance')
