@@ -39,7 +39,7 @@ def app():
                     mime='text/csv',
                 )
 
-    with open('model/model_logreg.pkl', 'rb') as f:
+    with open('./streamlit/model/model_logreg.pkl', 'rb') as f:
         model = pickle.load(f)
 
     st.markdown("<h2 style = 'color : #ff4b4b'>  Batch Customer Prediction</h2>",
@@ -52,7 +52,7 @@ def app():
         "use example file", value=False, help="Use in-built example file")
 
     if use_example_file:
-        upload_file = "data/example.csv"
+        upload_file = "./streamlit/data/example.csv"
         df = pd.read_csv(upload_file)
         predict_df(df)
     else:
