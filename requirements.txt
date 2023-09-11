@@ -1,6 +1,5 @@
 scikit-learn
 matplotlib
-numpy
 imbalanced-learn
 seaborn
 streamlit
