@@ -1,0 +1,9 @@
+scikit-learn==1.0.2
+matplotlib
+numpy
+imbalanced-learn
+scikit-optimize
+seaborn
+shap
+click
+streamlit
