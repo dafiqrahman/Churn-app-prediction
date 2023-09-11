@@ -8,10 +8,10 @@ import pickle
 with open('styling/style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 #import model
-with open('model/model_logreg.pkl', 'rb') as f:
+with open('./streamlit/model/model_logreg.pkl', 'rb') as f:
     model = pickle.load(f)
 
-with open('model/proc.pkl', 'rb') as b:
+with open('./streamlit/model/proc.pkl', 'rb') as b:
     proc = pickle.load(b)
 
 # with open('model/explainer.pkl', 'rb') as e:
