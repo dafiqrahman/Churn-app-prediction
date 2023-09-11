@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import shap
+#import shap
 import pickle
 
 
@@ -14,8 +14,8 @@ with open('model/model_logreg.pkl', 'rb') as f:
 with open('model/proc.pkl', 'rb') as b:
     proc = pickle.load(b)
 
-with open('model/explainer.pkl', 'rb') as e:
-    explainer_sh = pickle.load(e)
+# with open('model/explainer.pkl', 'rb') as e:
+#     explainer_sh = pickle.load(e)
 
 # set streamlit layout size
 
@@ -135,18 +135,18 @@ if st.button('Prediksi'):
     col2.metric('Probabilitas', round(model.predict_proba(df)[0][1], 2))
     col3.metric('precision', "0.60")
     col4.metric("Recall", "0.68")
-    # use 1 row of data here. Could use multiple rows if desired
-    st.markdown(
-        '<h4 style = "color:  #ff4b4b">Model Explaination</h4>', unsafe_allow_html=True)
-    st.write("dengan menggunakan library SHAP, kita bisa melihat mengapa model ini memprediksi customer akan churna atau sebaliknya. Kita bisa melihat variabel variabel mana saja yang berpengaruh besar terhadap prediksi yang dibuat oleh model")
-    st.write('warna merah menandakan bahwa variabel tersebut mempengaruhi model untuk memprediksi customer akan churn, dan sebaliknya untuk yang berwarna biru')
-    #data_for_prediction_array = data_for_prediction.values.reshape(1, -1)
-    with st.spinner("Processing..."):
-        data_for_prediction = proc.transform(df)
-        shap_values = explainer_sh(data_for_prediction)
-        shap_values[0].data[0] = df.MonthlyCharges
-        shap_values[0].data[1] = df.TotalCharges
-        st.set_option('deprecation.showPyplotGlobalUse', False)
-        a = shap.plots.waterfall(shap_values[0][:, 1])
-        # set width
-        st.pyplot(a)
+    # # use 1 row of data here. Could use multiple rows if desired
+    # st.markdown(
+    #     '<h4 style = "color:  #ff4b4b">Model Explaination</h4>', unsafe_allow_html=True)
+    # st.write("dengan menggunakan library SHAP, kita bisa melihat mengapa model ini memprediksi customer akan churna atau sebaliknya. Kita bisa melihat variabel variabel mana saja yang berpengaruh besar terhadap prediksi yang dibuat oleh model")
+    # st.write('warna merah menandakan bahwa variabel tersebut mempengaruhi model untuk memprediksi customer akan churn, dan sebaliknya untuk yang berwarna biru')
+    # #data_for_prediction_array = data_for_prediction.values.reshape(1, -1)
+    # with st.spinner("Processing..."):
+    #     data_for_prediction = proc.transform(df)
+    #     shap_values = explainer_sh(data_for_prediction)
+    #     shap_values[0].data[0] = df.MonthlyCharges
+    #     shap_values[0].data[1] = df.TotalCharges
+    #     st.set_option('deprecation.showPyplotGlobalUse', False)
+    #     a = shap.plots.waterfall(shap_values[0][:, 1])
+    #     # set width
+    #     st.pyplot(a)
