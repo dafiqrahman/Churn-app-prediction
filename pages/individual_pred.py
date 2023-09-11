@@ -130,11 +130,14 @@ if st.button('Prediksi'):
     # predict
     prediction = model.predict(df)
     pred = ['Not Churn', 'Churn']
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2= st.columns(2)
     col1.metric('Prediksi', pred[prediction[0]])
-    col2.metric('Probabilitas', round(model.predict_proba(df)[0][1], 2))
-    col3.metric('precision', "0.60")
-    col4.metric("Recall", "0.68")
+    if pred[prediction[0]] == "Not Churn":
+        col2.metric('Probabilitas', 1- round(model.predict_proba(df)[0][1], 2))
+    else:
+        col2.metric('Probabilitas', round(model.predict_proba(df)[0][1], 2))
+    # col3.metric('precision', "0.60")
+    # col4.metric("Recall", "0.68")
     # # use 1 row of data here. Could use multiple rows if desired
     # st.markdown(
     #     '<h4 style = "color:  #ff4b4b">Model Explaination</h4>', unsafe_allow_html=True)
