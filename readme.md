@@ -1,1 +1,1 @@
-live demo : https://share.streamlit.io/dafiqrahman/finproc/main/streamlit/app.py
+live demo : https://churn-app-prediction.streamlit.app
